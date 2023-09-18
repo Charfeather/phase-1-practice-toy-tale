@@ -13,8 +13,11 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 });
+//when function is called create button, give button ID, when function is called again, create new button with new ID
+//if button(1)=true increment button else do nothing 
 function toyAdder(){
   const name=document.getElementById('toyName').value
+  const imgSrc=document.getElementById('imageSrc').value
   //create a div with a class called card
   const div= document.createElement('div')
   div.id="card"
@@ -27,6 +30,7 @@ function toyAdder(){
   div.append(headingTwo)
   //image of the toy with class toy-avatar
   const image=document.createElement('img')
+  image.src=imgSrc
   image.class="toy-avatar"
   headingTwo.append(image)
   // how many likes the toy has
@@ -34,12 +38,17 @@ function toyAdder(){
   headingTwo.append(p)
   p.innerText= "this toy has X likes"
   //counter
-  let counter=0
+  let counter=document.createElement('p')
+  counter.innerText=0
   p.append(counter)
   //like button for the toy
   const button=document.createElement("BUTTON")
   div.append(button)
   button.innerText="Like"
+  button.onclick=function increment(){
+    counter.innerText++
+    console.log('I was clicked')
+  }
   //click event listener for like button
   //prevent default
   //gives toy name
